@@ -1,13 +1,15 @@
 import React from 'react'
+import {withRouter} from 'react-router-dom'
 
 import './minuItem.scss'
 
 
-const MinuItem = ({title, image, size}) => {
+const MinuItem = ({title, imageUrl, size , history ,linkUrl, match}) => {
     return (
-        <div  className={`${size} menu-item`}>
-
-            <div className={'backgroundImage'}  style={{backgroundImage: `url(${image})`}}/>
+        <div  className={`${size} menu-item`}
+              onClick={() => history.push(`${match.url}${linkUrl}`)}
+        >
+            <div className={'backgroundImage'}  style={{backgroundImage: `url(${imageUrl})`}}/>
             <div className={'content'}>
                 <h1 className={'title'}> {title.toUpperCase()} </h1>
                 <span className={'subtitle'}> SHOP NOW </span>
@@ -16,4 +18,4 @@ const MinuItem = ({title, image, size}) => {
     )
 };
 
-export default MinuItem;
+export default withRouter(MinuItem);
