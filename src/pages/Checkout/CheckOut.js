@@ -10,6 +10,7 @@ import CarttItem from "../../components/Cart-Item/CartItem";
 
 
 
+
 const CheckOut = ({cartItems, total}) => {
     return (
         <div className={'checkout-page'}>
@@ -48,4 +49,4 @@ const mapStateToProps = createStructuredSelector(
     }
 )
 
-export default connect(mapStateToProps)(CheckOut);
+export default connect( mapStateToProps)(CheckOut);
