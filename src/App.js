@@ -9,9 +9,10 @@ import HomePage from './pages/homePage/HomePage'
 import ShopPage from './pages/shop/ShopPage'
 import Header from './components/Header/Header'
 import Sign from './pages/Sign/Sign'
-import {auth, creaateUserProfileDocument} from "./firebase/firebase";
+import {auth, creaateUserProfileDocument, addCollectionsDocuments} from "./firebase/firebase";
 import {setCurrentUser} from './actions/User'
 import {selectCurrentUser} from "./redux/user/user-selectors";
+
 
 
 class App extends React.Component {
@@ -35,7 +36,11 @@ class App extends React.Component {
                     })
                 })
             }
-            setCurrentUser(userAuth)
+            setCurrentUser(userAuth);
+            // addCollectionsDocuments(
+            //     'collections',
+            //     collectionArray.map(({title, items}) => ({title, items}))
+            // );
         })
     }
 
@@ -65,7 +70,8 @@ class App extends React.Component {
 }
 
 const mapStateToProps = createStructuredSelector({
-    currentUser: selectCurrentUser
+    currentUser: selectCurrentUser,
+
 });
 const mapDispatchToProps = dispatch => (
     {

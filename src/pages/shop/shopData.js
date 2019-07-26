@@ -1,4 +1,3 @@
-import uuid from 'uuid'
 
 export const SHOP_DATA = {
     hats: {

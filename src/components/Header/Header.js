@@ -10,31 +10,36 @@ import Icon from '../Card-Icon/Icon'
 import CartDropdown from "../Cart-Dropdown/cardDropdown";
 import {selectCurrentUser} from "../../redux/user/user-selectors";
 import {selectCartHidden} from "../../redux/cart/cart-Selectors";
+import {HeaderContainer,
+    LogoContainer,
+    OptionsContainer,
+    OptionLink,
+    OptionDiv} from './Header.styles'
 
 const Header = ({currenUser, hidden}) => {
     return (
-        <div className={'header'}>
-            <Link className={'logo-container'} to={'/'}>
+        <HeaderContainer>
+            <LogoContainer to={'/'}>
                 <Logo className={'logo'}/>
-            </Link>
-            <div className={'options'}>
-                <Link className={'option'} to={'/shop'}>
+            </LogoContainer>
+            <OptionsContainer>
+                <OptionLink to={'/shop'}>
                     SHOP
-                </Link>
-                <Link className={'option'} to={'/shop'}>
+                </OptionLink>
+                <OptionLink to={'/shop'}>
                     CONTACT
-                </Link>
+                </OptionLink>
                 {
-                    currenUser ? <div className={'option'} onClick={() => auth.signOut()}> SIGN OUT</div> :
-                        <Link className={'option'} to={'/signin'}>SIGN IN</Link>
+                    currenUser ? <OptionDiv onClick={() => auth.signOut()}> SIGN OUT</OptionDiv> :
+                        <OptionLink to={'/signin'}>SIGN IN</OptionLink>
                 }
                 <Icon/>
-            </div>
+            </OptionsContainer>
             {
                 hidden ? '' : <CartDropdown/>
             }
 
-        </div>
+        </HeaderContainer>
     )
 };
 
